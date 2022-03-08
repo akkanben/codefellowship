@@ -22,6 +22,11 @@
 </header>
 
 <main>
+    <div id="title-container">
+        <h1>Code Fellowship</h1>
+    </div>
+    <div th:if="${username == null}"><p>Join the Code Fellowship community and meet up with other coders.</p></div>
+    <div th:if="${username != null}"><p th:text="${'Welcome to Code Fellowship ' + username + '.'}"></p></div>
 </main>
 </body>
 </html>
