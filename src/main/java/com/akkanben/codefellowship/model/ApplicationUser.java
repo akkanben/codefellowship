@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -17,7 +18,7 @@ public class ApplicationUser implements UserDetails {
     String password;
     String firstName;
     String lastName;
-    Date dateOfBirth;
+    LocalDate dateOfBirth;
     @Column(columnDefinition = "text")
     String bio;
 
@@ -25,7 +26,7 @@ public class ApplicationUser implements UserDetails {
 
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate date, String bio) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -95,11 +96,11 @@ public class ApplicationUser implements UserDetails {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
