@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/sign-up">signup</a></li>
+    </ul>
+</header>
+<main>
+    <div id="title-container">
+        <img src="../images/toomanysecrets.png">
+    </div>
+    <Form action="/create-account" method="post">
+        <fieldset>
+            <legend>Sign Up</legend>
+            <label for="username">Username</label>
+            <input type="text" name="username">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+
+            <label for="firstname"></label>
+            <input type="text" name="firstname">
+
+            <label for="lastname"></label>
+            <input type="text" name="lastname">
+
+            <label for="dateofbirth"></label>
+            <input type="date" name="date">
+
+            <label for="bio"></label>
+            <textarea name="bio">Enter bio text...</textarea>
+
+
+            <input class="button" type="submit" value="Create Account">
+        </fieldset>
+    </Form>
+
+</main>
+</body>
+</html>
