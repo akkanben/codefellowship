@@ -79,7 +79,7 @@ public class ApplicationUserController {
         applicationUser.setLastName(lastname);
         applicationUserRepository.save(applicationUser);
         authWithHttpServletRequest(username, password);
-        return new RedirectView("/code-fellowship");
+        return new RedirectView("/");
     }
 
     public void authWithHttpServletRequest(String username, String password) {

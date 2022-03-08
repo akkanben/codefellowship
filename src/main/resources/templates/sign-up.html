@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
 <header>
@@ -22,21 +24,21 @@
         <fieldset>
             <legend>Sign Up</legend>
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
             <label for="password">Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" required>
 
             <label for="firstname">First Name</label>
-            <input type="text" name="firstname">
+            <input type="text" name="firstname" required>
 
             <label for="lastname">Last Name</label>
-            <input type="text" name="lastname">
+            <input type="text" name="lastname" required>
 
             <label for="dateofbirth"></label>
-            <input type="date" name="date">
+            <input type="date" name="date" required>
 
             <label for="bio"></label>
-            <textarea name="bio">Enter bio text...</textarea>
+            <textarea name="bio" required>Enter bio text...</textarea>
 
 
             <input class="button" type="submit" value="Create Account">

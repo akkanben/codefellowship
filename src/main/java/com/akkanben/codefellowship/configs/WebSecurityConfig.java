@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/create-account").permitAll()
                     .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/images/**").permitAll()
                     .antMatchers("/css/**").permitAll()
                     .anyRequest().authenticated()
                 .and()

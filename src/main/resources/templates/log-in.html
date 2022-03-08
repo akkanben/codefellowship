@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Log In</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
 <header>
@@ -27,9 +29,9 @@
         <h2>Log In</h2>
         <fieldset>
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
             <label for="password">Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" required>
             <input class="button" type="submit" value="Submit">
         </fieldset>
         <a class="no-account-text" href="/sign-up">No account? Create One</a>
