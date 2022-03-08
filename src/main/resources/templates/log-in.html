@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<header>
+    <div th:if="${username != null}">
+        <h1 th:text="${username}"></h1>
+    </div>
+    <ul>
+        <li th:if="${username != null}"><a href="/logout" th:text="${'Logout ' + username}"></a></li>
+        <li><a href="/">home</a></li>
+        <li><a href="/sign-up">signup</a></li>
+    </ul>
+</header>
+
+<main>
+
+    <div id="title-container">
+        <h1>Code Fellowship</h1>
+    </div>
+    <Form action="/login" method="post">
+        <h2>Log In</h2>
+        <fieldset>
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <input class="button" type="submit" value="Submit">
+        </fieldset>
+        <a class="no-account-text" href="/sign-up">No account? Create One</a>
+    </Form>
+</main>
+</body>
+</html>

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Monofett&family=PT+Mono&display=swap');
+
+body {
+    background-image: url("/images/bg.png");
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-family: 'PT Mono', monospace;
+    font-size: 7em;
+    padding: .5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    padding: .5em;
+}
+`
+h3 {
+    font-size: .9em;
+    padding: .2em;
+}
+
+main {
+    text-align: center;
+    padding-top: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    height: 15%;
+    background-color: #FFFFFF90;
+    box-shadow:
+            2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+            41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+            100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header a:hover {
+    color: #a9beb1;
+}
+
+li {
+    padding: 15px;
+}
+
+form {
+    padding: 2% 2%;
+    background-color: #8b9890;
+    max-width: 25%;
+    min-width: 200px;
+    border-radius: 6px;
+    box-shadow:
+            2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+            41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+            100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+    margin-top: 10%;
+}
+
+li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+article {
+    padding: 20px;
+    background-color: #FFFFFF66;
+    margin: 2% 0;
+    max-width: 80%;
+}
+
+fieldset {
+    text-align: left;
+    color: #3b2418;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+legend {
+    font-size: 1.5em;
+    padding-bottom: 2em;
+}
+
+label {
+    padding: 15px 0 5px 0;
+}
+
+input {
+    background-color: #FFFAFA;
+}
+
+.button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px 0;
+    cursor: pointer;
+}
