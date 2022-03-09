@@ -11,9 +11,6 @@
 </head>
 <body>
 <header>
-    <div th:if="${username != null}">
-        <h1 th:text="${username}"></h1>
-    </div>
     <ul>
         <li th:if="${username != null}"><a href="/logout" th:text="${'Logout ' + username}"></a></li>
         <li><a href="/">home</a></li>

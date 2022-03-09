@@ -54,6 +54,26 @@ public class ApplicationUserController {
         return "index.html";
     }
 
+    @GetMapping("/profile/{userID}")
+    public String getUserProfilePage(Principal p, Model m) {
+        if (p != null) {
+            String username = p.getName();
+            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
+            m.addAttribute("username", username);
+        }
+        return "index.html";
+    }
+
+    @GetMapping("/my-profile")
+    public String getMyProfile(Principal p, Model m) {
+        if (p != null) {
+            String username = p.getName();
+            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
+            m.addAttribute("applicationUser", applicationUser);
+        }
+        return "my-profile.html";
+    }
+
     @PostMapping("/logout")
     public RedirectView logoutUser(Principal p) {
         if (p != null) {
@@ -69,14 +89,10 @@ public class ApplicationUserController {
 
     @PostMapping("/create-account")
     public RedirectView addNewAccount(String username, String password, String firstname, String lastname, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, String bio) {
+        if (applicationUserRepository.findByUsername(username) != null)
+            return new RedirectView("/");
         String encryptedPassword = passwordEncoder.encode(password);
-        ApplicationUser applicationUser = new ApplicationUser();
-        applicationUser.setUsername(username);
-        applicationUser.setPassword(encryptedPassword);
-        applicationUser.setBio(bio);
-        applicationUser.setDateOfBirth(date);
-        applicationUser.setFirstName(firstname);
-        applicationUser.setLastName(lastname);
+        ApplicationUser applicationUser = new ApplicationUser(username, encryptedPassword, firstname, lastname, date, bio);
         applicationUserRepository.save(applicationUser);
         authWithHttpServletRequest(username, password);
         return new RedirectView("/");
