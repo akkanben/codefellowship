@@ -8,6 +8,7 @@
     <title>Sign Up</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/sign-up.css">
 </head>
 <body>
 <header>
@@ -24,16 +25,27 @@
     <Form action="/create-account" method="post">
         <fieldset>
             <legend>Sign Up</legend>
-            <label for="username">Username</label>
-            <input type="text" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
+            <div class="signup-block">
+                <div class="input-block">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input-block">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+                </div>
+            </div>
 
-            <label for="firstname">First Name</label>
-            <input type="text" name="firstname" required>
-
-            <label for="lastname">Last Name</label>
-            <input type="text" name="lastname" required>
+            <div class="signup-block">
+                <div class="input-block">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" required>
+                </div>
+                <div class="input-block">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" required>
+                </div>
+            </div>
 
             <label for="dateofbirth"></label>
             <input type="date" name="date" required>

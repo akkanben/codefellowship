@@ -1,0 +1,29 @@
+#post-form {
+    width: 80%;
+    max-width: 800px;
+    margin: 5% 5%;
+}
+
+#new-content-text {
+    width: 80%;
+}
+
+h2.subject {
+    font-weight: bolder;;
+}
+
+p.date, h2.subject {
+    align-self: left;
+    padding: 1em;
+    text-align: left;
+}
+
+textarea {
+    resize: none;
+    width: 80%;
+    min-height: 200px;
+}
+
+#new-content-subject {
+    width: 20%;
+}

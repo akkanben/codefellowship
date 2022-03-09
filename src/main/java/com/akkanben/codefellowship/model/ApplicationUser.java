@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -21,12 +22,14 @@ public class ApplicationUser implements UserDetails {
     LocalDate dateOfBirth;
     @Column(columnDefinition = "text")
     String bio;
+    @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
+    List<Post> postList;
 
     public ApplicationUser() {
 
     }
 
-    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate date, String bio) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, LocalDate dateOfBirth, String bio) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -110,5 +113,9 @@ public class ApplicationUser implements UserDetails {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public List<Post> getPostList() {
+        return postList;
     }
 }

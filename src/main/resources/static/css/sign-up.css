@@ -1,0 +1,10 @@
+.signup-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
