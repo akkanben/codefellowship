@@ -13,12 +13,7 @@
 </head>
 <body>
 <header>
-    <ul>
-        <li th:if="${username != null}"><a href="/logout" th:text="${'Log Out ' + username}"></a></li>
-        <li th:if="${username == null}"><a href="/login" >Log In</a></li>
-        <li th:if="${username == null}"><a href="/sign-up" >Sign Up</a></li>
-        <li><a href="/">home</a></li>
-    </ul>
+    <div th:replace="/fragments/header :: ul"></div>
 </header>
 
 <main>

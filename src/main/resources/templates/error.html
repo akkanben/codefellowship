@@ -14,13 +14,7 @@
 
 </header>
     <header>
-    <ul>
-        <li th:if="${applicationUser != null}"><a href="/logout"
-                                                  th:text="${'Log Out' + applicationUser.firstName}"></a></li>
-        <li th:if="${applicationUser == null}"><a href="/login">Log In</a></li>
-        <li th:if="${applicationUser == null}"><a href="/sign-up">Sign Up</a></li>
-        <li><a href="/">home</a></li>
-    </ul>
+        <div th:replace="/fragments/header :: ul"></div>
     </header>
 <main>
     <div>
