@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -65,8 +66,14 @@ public class ApplicationUserController {
                 m.addAttribute("applicationUser", applicationUser);
         }
         ApplicationUser publicUser = applicationUserRepository.getById(userID);
-        m.addAttribute("publicUser", publicUser);
-        return "profile.html";
+        try {
+            publicUser.getFirstName();
+        } catch (EntityNotFoundException enfe) {
+            m.addAttribute("errorMessage", "Could not find a user for that id!");
+            return "index.html";
+        }
+            m.addAttribute("publicUser", publicUser);
+            return "profile.html";
     }
 
     @GetMapping("/my-profile")

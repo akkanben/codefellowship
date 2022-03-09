@@ -46,8 +46,14 @@
             </div>
         </ul>
         <img src="/images/default-profile.png"/>
-
     </div>
+    <article th:each="post : ${publicUser.postList}">
+        <h2 class="subject" th:text="${post.subject}"></h2>
+        <p class="date" th:text="${post.createdAt}"></p>
+        <div class="postcontent-container">
+            <p th:text="${post.body}"></p>
+        </div>
+    </article>
 </main>
 </body>
 </html>

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/user-details.css">
+    <link rel="stylesheet" href="/css/my-profile.css">
+
 </head>
 
 <header>
@@ -23,7 +25,7 @@
 
 <main>
     <div class="user-details-container">
-        <ul th:if="${applicationUser != null}">
+        <ul>
             <div class="user-detail-duos">
                 <li class="user-detail-label">First Name</li>
                 <li th:text="${applicationUser.firstName}"></li>
@@ -48,6 +50,23 @@
         <img src="/images/default-profile.png"/>
 
     </div>
+    <article th:each="post : ${applicationUser.postList}">
+        <h2 class="subject" th:text="${post.subject}"></h2>
+        <p class="date" th:text="${post.createdAt}"></p>
+        <div class="postcontent-container">
+            <p th:text="${post.body}"></p>
+        </div>
+    </article>
+    <form id="post-form" action="/add-post" method="post">
+        <fieldset>
+            <legend>Make a new Post</legend>
+            <label for="subject">Subject</label>
+            <input id="new-content-subject" type="text" name="subject" required>
+            <label for="body">Content</label>
+            <textarea id="new-content-text" type="text" name="body" required></textarea>
+            <input class="button" type="submit" value="Submit Post">
+        </fieldset>
+    </form>
 </main>
 
 <body>
