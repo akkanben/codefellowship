@@ -1,4 +1,4 @@
-# Code Fellowship -- Login
+# Code Fellowship -- Login, Logout, Post, Error Handling
 
 The Code Fellowship application uses Spring Security to handle user sessions. The app feature a log in/out system with conditional text for the logged in user.
 
@@ -11,5 +11,12 @@ The Code Fellowship application uses Spring Security to handle user sessions. Th
 
 ### App Use
 
-Follow the link to create an account and enter a username and password, you'll be redirected back to the main page and automatically logged in.
+Follow the link to create an account and enter a username and password, you'll be redirected to the your profile page and be automatically logged in. On the profile page create new posts that will be publicly viewable. View other member's posts following the `/profile/{id}` path.
+
+## Features
+
+- Added a `/my-profile` route that allows user to create their own posts.
+- Added a `/profile/{id}` route that allows anyone to view user's profiles and posts by id.
+- Added a post postgres database repository for storing user posts.
+- Added a custom error page to replace the white-lable error pages.
 
