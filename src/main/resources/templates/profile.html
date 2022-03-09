@@ -5,16 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Profile</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/user-details.css">
 </head>
+<body>
 
 <header>
     <ul>
-        <li th:if="${applicationUser != null}"><a href="/logout"
-                                                  th:text="${'Log Out' + applicationUser.firstName}"></a></li>
+        <li th:if="${applicationUser != null}"><a href="/logout" th:text="${'Log Out' + applicationUser.firstName}"></a></li>
         <li th:if="${applicationUser == null}"><a href="/login">Log In</a></li>
         <li th:if="${applicationUser == null}"><a href="/sign-up">Sign Up</a></li>
         <li><a href="/">home</a></li>
@@ -23,34 +23,31 @@
 
 <main>
     <div class="user-details-container">
-        <ul th:if="${applicationUser != null}">
+        <ul th:if="${publicUser != null}">
             <div class="user-detail-duos">
                 <li class="user-detail-label">First Name</li>
-                <li th:text="${applicationUser.firstName}"></li>
+                <li th:text="${publicUser.firstName}"></li>
             </div>
             <div class="user-detail-duos">
                 <li class="user-detail-label">Last Name</li>
-                <li th:text="${applicationUser.lastName}"></li>
+                <li th:text="${publicUser.lastName}"></li>
             </div>
             <div class="user-detail-duos">
                 <li class="user-detail-label">Username</li>
-                <li th:text="${applicationUser.username}"></li>
+                <li th:text="${publicUser.username}"></li>
             </div>
             <div class="user-detail-duos">
                 <li class="user-detail-label">Date of Birth</li>
-                <li th:text="${applicationUser.dateOfBirth}"></li>
+                <li th:text="${publicUser.dateOfBirth}"></li>
             </div>
             <div class="user-detail-duos">
                 <li class="user-detail-label">Bio</li>
-                <li th:text="${applicationUser.bio}"></li>
+                <li th:text="${publicUser.bio}"></li>
             </div>
         </ul>
         <img src="/images/default-profile.png"/>
 
     </div>
 </main>
-
-<body>
-
 </body>
 </html>
