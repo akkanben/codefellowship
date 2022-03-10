@@ -20,8 +20,8 @@
     <div id="title-container">
         <h1>Code Fellowship</h1>
     </div>
-    <div th:if="${username == null}"><p>Join the Code Fellowship community and meet up with other coders.</p></div>
-    <div th:if="${username != null}"><p th:text="${'Welcome to Code Fellowship ' + username + '.'}"></p></div>
+    <div th:if="${applicationUser == null}"><p>Join the Code Fellowship community and meet up with other coders.</p></div>
+    <div th:if="${applicationUser != null}"><p th:text="${'Welcome to Code Fellowship ' + applicationUser.firstName + '.'}"></p></div>
 </main>
 </body>
 </html>

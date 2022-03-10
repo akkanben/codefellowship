@@ -16,11 +16,12 @@
 
 <main>
     <div id="all-users-container">
-        <ul>
+        <ul th:if="${allUsers != null}">
             <li th:each="user : ${allUsers}">
                 <a th:text="${user.username}" th:href="${'/profile/' + user.id}"></a>
             </li>
         </ul>
+        <h2 th:else="${'No Posts'}"></h2>
     </div>
 </main>
 </body>

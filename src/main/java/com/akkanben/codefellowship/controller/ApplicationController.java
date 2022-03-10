@@ -1,6 +1,7 @@
 package com.akkanben.codefellowship.controller;
 
 import com.akkanben.codefellowship.model.ApplicationUser;
+import com.akkanben.codefellowship.model.Post;
 import com.akkanben.codefellowship.repositories.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
@@ -27,6 +28,20 @@ public class ApplicationController {
         List<ApplicationUser> allUsers = applicationUserRepository.findAll();
         m.addAttribute("allUsers", allUsers);
         return "all-users.html";
+    }
+
+    @GetMapping("/my-feed")
+    public String getMyFeed(Principal p, Model m) {
+        if (p != null) {
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("applicationUser", applicationUser);
+            List<Post> followingPosts = new ArrayList<>();
+            for (ApplicationUser user : applicationUser.getFollowingSet()) {
+                followingPosts.addAll(user.getPostList());
+            }
+            m.addAttribute("allUserPosts", followingPosts);
+        }
+        return "my-feed.html";
     }
 
 }

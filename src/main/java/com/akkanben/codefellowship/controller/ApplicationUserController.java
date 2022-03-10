@@ -49,7 +49,7 @@ public class ApplicationUserController {
     public String getHomePage(Principal p, Model m) {
         if (p != null) {
             ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("username", p.getName());
+            m.addAttribute("applicationUser", applicationUser);
         }
         return "index.html";
     }
