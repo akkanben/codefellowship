@@ -42,6 +42,9 @@
         </ul>
         <img src="/images/default-profile.png"/>
     </div>
+    <form th:if="${applicationUser != null && applicationUser.username != publicUser.username}" th:action="${'/follow/' + publicUser.id}" th:method="PUT">
+        <input type="submit" th:value="${'Follow ' + publicUser.username}">
+    </form>
     <article th:each="post : ${publicUser.postList}">
         <h2 class="subject" th:text="${post.subject}"></h2>
         <p class="date" th:text="${post.createdAt}"></p>

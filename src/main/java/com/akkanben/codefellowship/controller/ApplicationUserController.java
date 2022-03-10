@@ -4,13 +4,13 @@ import com.akkanben.codefellowship.model.ApplicationUser;
 import com.akkanben.codefellowship.repositories.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Controller
 public class ApplicationUserController {
@@ -40,9 +39,8 @@ public class ApplicationUserController {
     @GetMapping("/login")
     public String getLoginPage(Principal p, Model m) {
         if (p != null) {
-            String username = p.getName();
-            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
-            m.addAttribute("username", username);
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("username", p.getName());
         }
         return "log-in.html";
     }
@@ -50,9 +48,8 @@ public class ApplicationUserController {
     @GetMapping("/")
     public String getHomePage(Principal p, Model m) {
         if (p != null) {
-            String username = p.getName();
-            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
-            m.addAttribute("username", username);
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("username", p.getName());
         }
         return "index.html";
     }
@@ -60,8 +57,7 @@ public class ApplicationUserController {
     @GetMapping("/profile/{userID}")
     public String getUserProfilePage(@PathVariable long userID, Principal p, Model m) {
         if (p != null) {
-            String username = p.getName();
-            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
             if (applicationUser != null)
                 m.addAttribute("applicationUser", applicationUser);
         }
@@ -79,8 +75,7 @@ public class ApplicationUserController {
     @GetMapping("/my-profile")
     public String getMyProfile(Principal p, Model m) {
         if (p != null) {
-            String username = p.getName();
-            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(username);
+            ApplicationUser applicationUser = (ApplicationUser) applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("applicationUser", applicationUser);
         }
         return "my-profile.html";
@@ -122,6 +117,20 @@ public class ApplicationUserController {
     @PostMapping("/login")
     public RedirectView loginToApp(String username, String password) {
         return new RedirectView("/");
+    }
+
+    @PutMapping("/follow/{profileId}")
+    RedirectView followUser(@PathVariable long profileId, Principal p, Model m) {
+        if (p != null) {
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            ApplicationUser publicUser = applicationUserRepository.getById(profileId);
+            if (applicationUser != null && publicUser != null) {
+                m.addAttribute("applicationUser", applicationUser);
+                applicationUser.getFollowingSet().add(publicUser);
+                applicationUserRepository.save(applicationUser);
+            }
+        }
+        return new RedirectView("/profile/" + profileId);
     }
 
 }

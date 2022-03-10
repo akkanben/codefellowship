@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Users</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+<header>
+    <div th:replace="/fragments/header :: ul"></div>
+</header>
+
+<main>
+    <div id="all-users-container">
+        <ul>
+            <li th:each="user : ${allUsers}">
+                <a th:text="${user.username}" th:href="${'/profile/' + user.id}"></a>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>
