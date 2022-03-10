@@ -25,6 +25,10 @@ public class ApplicationController {
 
     @GetMapping("/all-users")
     public String getAllUsersPage(Principal p, Model m) {
+        if (p != null) {
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("applicationUser", applicationUser);
+        }
         List<ApplicationUser> allUsers = applicationUserRepository.findAll();
         m.addAttribute("allUsers", allUsers);
         return "all-users.html";
