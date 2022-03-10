@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -24,6 +25,18 @@ public class ApplicationUser implements UserDetails {
     String bio;
     @OneToMany(mappedBy = "applicationUser", cascade = CascadeType.ALL)
     List<Post> postList;
+
+    @ManyToMany(mappedBy = "followingSet")
+    Set<ApplicationUser> followerSet;
+
+
+    @ManyToMany
+            @JoinTable(
+                    name = "userName_to_following",
+                    joinColumns = {@JoinColumn(name="userName")},
+                    inverseJoinColumns = {@JoinColumn(name = "following")}
+            )
+    Set<ApplicationUser> followingSet;
 
     public ApplicationUser() {
 
@@ -117,5 +130,21 @@ public class ApplicationUser implements UserDetails {
 
     public List<Post> getPostList() {
         return postList;
+    }
+
+    public Set<ApplicationUser> getFollowerSet() {
+        return followerSet;
+    }
+
+    public void setFollowerSet(Set<ApplicationUser> followerSet) {
+        this.followerSet = followerSet;
+    }
+
+    public Set<ApplicationUser> getFollowingSet() {
+        return followingSet;
+    }
+
+    public void setFollowingSet(Set<ApplicationUser> followingSet) {
+        this.followingSet = followingSet;
     }
 }

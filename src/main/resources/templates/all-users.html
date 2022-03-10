@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Users</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/all-users.css">
+</head>
+<body>
+<header>
+    <div th:replace="/fragments/header :: ul"></div>
+</header>
+
+<main>
+    <div id="all-users-container">
+        <ul th:if="${allUsers != null}">
+            <div th:each="user : ${allUsers}">
+                <a th:href="${'/profile/' + user.id}">
+                    <li class="all-user-row">
+                        <p th:text="${user.firstName}"></p>
+                        <p th:text="${user.lastName}"></p>
+                        <p th:text="${user.username}"></p>
+                    </li>
+                </a>
+            </div>
+        </ul>
+        <h2 th:else="${'No Posts'}"></h2>
+    </div>
+</main>
+</body>
+</html>

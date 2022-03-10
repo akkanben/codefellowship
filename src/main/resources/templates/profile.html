@@ -39,12 +39,25 @@
                 <li class="user-detail-label">Bio</li>
                 <li th:text="${publicUser.bio}"></li>
             </div>
+            <div class="user-detail-duos">
+                <form id="follow-button" th:if="${applicationUser != null
+                        && applicationUser.username != publicUser.username
+                        && isFollowing == false}" th:action="${'/follow/' + publicUser.id}" th:method="PUT">
+                    <input class="button" type="submit" th:value="${'Follow ' + publicUser.username}">
+                </form>
+                <li id="following-text" th:if="${isFollowing == true}"
+                    th:text="${'&#x2705; Following ' + publicUser.firstName}"></li>
+            </div>
         </ul>
         <img src="/images/default-profile.png"/>
     </div>
     <article th:each="post : ${publicUser.postList}">
-        <h2 class="subject" th:text="${post.subject}"></h2>
-        <p class="date" th:text="${post.createdAt}"></p>
+        <div class="post-header">
+            <div class="post-subject-date-container">
+                <h2 class="subject" th:text="${post.subject}"></h2>
+                <p class="date" th:text="${post.createdAt}"></p>
+            </div>
+        </div>
         <div class="postcontent-container">
             <p th:text="${post.body}"></p>
         </div>

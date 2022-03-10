@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Following Posts</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/user-details.css">
+</head>
+<body>
+
+
+<header>
+    <div th:replace="/fragments/header :: ul"></div>
+</header>
+
+<main>
+
+    <h1>Feed</h1>
+
+    <article th:each="post : ${allUserPosts}">
+        <div class="post-header">
+            <div class="post-subject-date-container">
+                <h2 class="subject" th:text="${post.subject}"></h2>
+                <p class="date" th:text="${post.createdAt}"></p>
+            </div>
+        <div class="post-author-container">
+            <a class="profile" th:href="${'/profile/' + post.applicationUser.id}"
+               th:text="${post.applicationUser.firstName + ' ' + post.applicationUser.lastName}"></a>
+        </div>
+
+        </div>
+        <div class="postcontent-container">
+            <p th:text="${post.body}"></p>
+        </div>
+    </article>
+</main>
+</body>
+</html>

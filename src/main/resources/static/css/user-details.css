@@ -25,3 +25,33 @@ img {
 .user-detail-duos {
     padding: 8px 8px;
 }
+
+#follow-button {
+    padding: 0;
+    background-color: transparent;
+    min-width: 0;
+    box-shadow: none;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+}
+
+
+.post-author-container{
+}
+
+.post-subject-date-container h2{
+    padding: .5em 0;
+
+}
+.postcontent-container {
+    padding: 2em;
+}
+
+.profile {
+    color: #8b9890;
+}
