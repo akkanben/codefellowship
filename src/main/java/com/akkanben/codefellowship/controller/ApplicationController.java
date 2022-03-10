@@ -23,6 +23,16 @@ public class ApplicationController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+
+    @GetMapping("/")
+    public String getHomePage(Principal p, Model m) {
+        if (p != null) {
+            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("applicationUser", applicationUser);
+        }
+        return "index.html";
+    }
+
     @GetMapping("/all-users")
     public String getAllUsersPage(Principal p, Model m) {
         if (p != null) {

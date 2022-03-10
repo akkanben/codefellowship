@@ -29,6 +29,7 @@ public class ApplicationUser implements UserDetails {
     @ManyToMany(mappedBy = "followingSet")
     Set<ApplicationUser> followerSet;
 
+
     @ManyToMany
             @JoinTable(
                     name = "userName_to_following",

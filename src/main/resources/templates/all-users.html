@@ -8,6 +8,7 @@
     <title>All Users</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/all-users.css">
 </head>
 <body>
 <header>
@@ -17,9 +18,15 @@
 <main>
     <div id="all-users-container">
         <ul th:if="${allUsers != null}">
-            <li th:each="user : ${allUsers}">
-                <a th:text="${user.username}" th:href="${'/profile/' + user.id}"></a>
-            </li>
+            <div th:each="user : ${allUsers}">
+                <a th:href="${'/profile/' + user.id}">
+                    <li class="all-user-row">
+                        <p th:text="${user.firstName}"></p>
+                        <p th:text="${user.lastName}"></p>
+                        <p th:text="${user.username}"></p>
+                    </li>
+                </a>
+            </div>
         </ul>
         <h2 th:else="${'No Posts'}"></h2>
     </div>

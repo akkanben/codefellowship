@@ -45,23 +45,23 @@ public class ApplicationUserController {
         return "log-in.html";
     }
 
-    @GetMapping("/")
-    public String getHomePage(Principal p, Model m) {
-        if (p != null) {
-            ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("applicationUser", applicationUser);
-        }
-        return "index.html";
-    }
 
     @GetMapping("/profile/{userID}")
     public String getUserProfilePage(@PathVariable long userID, Principal p, Model m) {
+        ApplicationUser publicUser = applicationUserRepository.getById(userID);
         if (p != null) {
             ApplicationUser applicationUser = applicationUserRepository.findByUsername(p.getName());
             if (applicationUser != null)
                 m.addAttribute("applicationUser", applicationUser);
+            boolean isFollowing = applicationUser.getFollowingSet().contains(publicUser);
+//            for(ApplicationUser user : applicationUser.getFollowingSet()) {
+//                if (user.getId() == publicUser.getId()) {
+//                    isFollowing = true;
+//                    break;
+//                }
+//            }
+            m.addAttribute("isFollowing", isFollowing);
         }
-        ApplicationUser publicUser = applicationUserRepository.getById(userID);
         try {
             publicUser.getFirstName();
         } catch (EntityNotFoundException enfe) {
